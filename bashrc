@@ -119,3 +119,17 @@ fi
 eval "`dircolors -b ~/.dircolors`"
 alias ls='ls --color=auto'
 
+# set PATH so it includes user's private ~/.local/bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+set -o vi
+
+# WSL (Windows Subsystem for Linux) specific settings.
+if grep -qE "(Microsoft|WSL)" /proc/version &>/dev/null; then
+    # Access local X-server with VcXsrv.
+    #   Requires: https://sourceforge.net/projects/vcxsrv/ (or alternative)
+    export DISPLAY=:0
+fi
+. /usr/share/autojump/autojump.bash
