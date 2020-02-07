@@ -98,8 +98,6 @@ if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
 
-" vim:set ft=vim et sw=2:
-
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -108,4 +106,14 @@ set shiftwidth=4
 set expandtab
 
 set clipboard=unnamedplus
-colo ron
+colo elflord
+
+set ignorecase
+
+noremap <C-J> <C-W>j<C-W>_
+noremap <C-K> <C-W>k<C-W>_
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
