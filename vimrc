@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " sensible.vim - Defaults everyone can agree on
