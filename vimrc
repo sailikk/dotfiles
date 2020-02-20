@@ -107,11 +107,15 @@ set tabstop=4 " show existing tab with 4 spaces width
 set shiftwidth=4 " when indenting with '>', use 4 spaces width
 set expandtab " On pressing tab, insert 4 spaces
 
+" To copy and paste using Vim and the rest of the system, you need:
+" 1. sudo apt install vim-gtk for +clipboard support
+" 2. set clipboard+=unnamedplus
+" 3. (for WSL) have Vcxsrv running in the background
 set clipboard=unnamedplus
 set ignorecase
 set splitright
 set number
-set relativenumber
+" set relativenumber " Seems to cause extreme scroll lag in Vim 8
 
 noremap <C-J> <C-W>j<C-W>_
 noremap <C-K> <C-W>k<C-W>_

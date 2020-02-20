@@ -1,3 +1,5 @@
 [user]
 	email = sailikkundu@gmail.com
 	name = Sailik Kundu
+[diff]
+	tool = vimdiff
