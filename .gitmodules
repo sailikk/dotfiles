@@ -1,4 +1,12 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-	ignore = dirty
+    ignore = dirty
+
+[submodule "vim/test/vim-markdown"]
+	path = vim/test
+	url = https://github.com/tpope/vim-markdown
+	ignore = untracked
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm

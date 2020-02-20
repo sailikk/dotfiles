@@ -10,6 +10,7 @@
     ~/.gitconfig:
     ~/.bashrc:
     ~/.tmux.conf:
+    ~/.tmux:
 
 - create:
     - ~/.vim/undo-history
