@@ -8,9 +8,9 @@
 [submodule "tmux/plugins/tmux-yank"]
 	path = tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank
-[submodule "vim/plugged/vim-commentary"]
-	path = vim/plugged/vim-commentary
-	url = https://github.com/tpope/vim-commentary
-[submodule "vim/plugged/vim-surround"]
-	path = vim/plugged/vim-surround
+[submodule "vim/pack/vendor/start/vim-surround"]
+	path = vim/pack/vendor/start/vim-surround
 	url = https://github.com/tpope/vim-surround
+[submodule "vim/pack/vendor/start/vim-commentary"]
+	path = vim/pack/vendor/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary

@@ -1,8 +1,3 @@
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-call plug#end()
-
 " sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
 " Version:      1.2
@@ -126,3 +121,7 @@ inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
 colo ron
+
+" Indentation in C++ don't indent private/public keyword
+set cindent
+set cinoptions+=g0
