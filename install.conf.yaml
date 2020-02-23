@@ -5,12 +5,13 @@
 - clean: ['~']
 
 - link:
-    ~/.vim:
-    ~/.vimrc:
-    ~/.gitconfig:
     ~/.bashrc:
+    ~/.gitconfig:
+    ~/.inputrc:
     ~/.tmux.conf:
     ~/.tmux:
+    ~/.vim:
+    ~/.vimrc:
 
 - create:
     - ~/.vim/undo-history
