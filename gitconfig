@@ -5,3 +5,8 @@
 	tool = vimdiff
 [core]
 	excludesfile = ~/.gitignore_global
+[alias]
+	st = status -sb
+	br = branch -vv
+	bra = branch -vv --all
+	co = checkout
