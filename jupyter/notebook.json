@@ -1,0 +1,12 @@
+{
+  "keys": {
+    "command": {
+      "bind": {
+        "ctrl-o": "jupyter-notebook:clear-cell-output"
+      }
+    }
+  },
+  "load_extensions": {
+    "vim_binding/vim_binding": true
+  }
+}
