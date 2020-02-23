@@ -3,3 +3,5 @@
 	name = Sailik Kundu
 [diff]
 	tool = vimdiff
+[core]
+	excludesfile = ~/.gitignore_global
