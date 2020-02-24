@@ -1,4 +1,5 @@
 " Global settings for all files (but may be overridden in ftplugin).
+" set relativenumber " Seems to cause extreme scroll lag in Vim 8
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -6,12 +7,12 @@ set clipboard=unnamedplus " system copy-paste support 1. get vim-gtk 2. set this
 set complete-=i
 set display+=lastline
 set expandtab " On pressing tab, insert 4 spaces
+set formatoptions+=j " Delete comment character when joining commented lines
 set ignorecase
 set incsearch
 set laststatus=2
 set nrformats-=octal
 set number
-" set relativenumber " Seems to cause extreme scroll lag in Vim 8
 set ruler
 set sessionoptions-=options
 set shiftwidth=4 " when indenting with '>', use 4 spaces width
@@ -63,9 +64,6 @@ if &listchars ==# 'eol:$'
   set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
 
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j " Delete comment character when joining commented lines
-endif
 
 if has('path_extra')
   setglobal tags-=./tags tags-=./tags; tags^=./tags;
