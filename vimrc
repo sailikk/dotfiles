@@ -16,6 +16,7 @@ set number
 set ruler
 set sessionoptions-=options
 set shiftwidth=4 " when indenting with '>', use 4 spaces width
+set smartcase
 set smarttab
 set splitright
 set tabstop=4 " show existing tab with 4 spaces width
@@ -28,7 +29,7 @@ noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
 
-inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
 if exists('g:loaded_sensible') || &compatible
