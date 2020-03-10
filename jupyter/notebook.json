@@ -2,7 +2,8 @@
   "keys": {
     "command": {
       "bind": {
-        "ctrl-o": "jupyter-notebook:clear-cell-output"
+        "ctrl-o": "jupyter-notebook:clear-cell-output",
+        "ctrl-c": "jupyter-notebook:interrupt-kernel"
       }
     }
   },
