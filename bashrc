@@ -123,6 +123,7 @@ if grep -qE "(Microsoft|WSL)" /proc/version &>/dev/null; then
     # Access local X-server with VcXsrv.
     #   Requires: https://sourceforge.net/projects/vcxsrv/ (or alternative)
     export DISPLAY=:0
+    alias start='cmd.exe /C start'
 fi
 
 if [ -f /usr/share/autojump/autojump.bash ]; then
