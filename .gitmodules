@@ -17,3 +17,6 @@
 [submodule "jupyter/nbextensions/vim_binding"]
 	path = jupyter/nbextensions/vim_binding
 	url = https://github.com/lambdalisue/jupyter-vim-binding
+[submodule "vim/pack/vendor/start/swift.vim"]
+	path = vim/pack/vendor/start/swift.vim
+	url = https://github.com/keith/swift.vim
