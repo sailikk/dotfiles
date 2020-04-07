@@ -11,6 +11,7 @@ set formatoptions+=j " Delete comment character when joining commented lines
 set ignorecase
 set incsearch
 set laststatus=2
+set mouse=a          " Add mouse support for scrolling
 set nrformats-=octal
 set number
 set ruler
@@ -102,3 +103,4 @@ if empty(mapcheck('<C-W>', 'i'))
 endif
 
 colo ron
+
