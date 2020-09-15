@@ -20,3 +20,6 @@
 [submodule "vim/pack/vendor/start/swift.vim"]
 	path = vim/pack/vendor/start/swift.vim
 	url = https://github.com/keith/swift.vim
+[submodule "vim/pack/vendor/start/vimtex"]
+	path = vim/pack/vendor/start/vimtex
+	url = https://github.com/lervag/vimtex.git
