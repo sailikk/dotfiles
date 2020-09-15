@@ -24,6 +24,9 @@ set tabstop=4 " show existing tab with 4 spaces width
 set viewoptions-=options
 set wildmenu
 
+execute pathogen#infect()
+silent! helptags ALL
+
 " My custom mappings
 noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
@@ -104,3 +107,7 @@ endif
 
 colo ron
 
+
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_forward_search_on_start = 1
