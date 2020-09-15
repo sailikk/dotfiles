@@ -11,6 +11,3 @@
 [submodule "jupyter/nbextensions/vim_binding"]
 	path = jupyter/nbextensions/vim_binding
 	url = https://github.com/lambdalisue/jupyter-vim-binding
-[submodule "vim/autoload/plug.vim"]
-	path = vim/autoload/plug.vim
-	url = https://github.com/junegunn/vim-plug.git
