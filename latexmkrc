@@ -11,5 +11,3 @@ push @generated_exts, "nlo";
 push @generated_exts, "nls";
 push @generated_exts, "synctex.gz";
 push @generated_exts, "run.xml";
-push @generated_exts, "log";
-push @generated_exts, "dvi";

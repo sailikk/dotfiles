@@ -11,7 +11,7 @@ set formatoptions+=j " Delete comment character when joining commented lines
 set ignorecase
 set incsearch
 set laststatus=2
-set mouse=a          " Add mouse support for scrolling
+set mouse=nic          " Add mouse support for scrolling
 set nrformats-=octal
 set number
 set ruler
@@ -111,7 +111,8 @@ colo ron
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_forward_search_on_start = 1
-let g:vimtex_quickfix_mode = 0
+let g:vimtex_quickfix_mode = 1
+autocmd User VimtexEventQuit VimtexClean
 
 " sirver/ultisnips options
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -123,3 +124,6 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 hi Conceal ctermbg=none
 
+" Line Highlighting
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
