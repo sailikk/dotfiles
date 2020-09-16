@@ -23,3 +23,6 @@
 [submodule "vim/bundle/tex-conceal.vim"]
 	path = vim/bundle/tex-conceal.vim
 	url = https://github.com/KeitaNakamura/tex-conceal.vim
+[submodule "vim/bundle/vim-commentary"]
+	path = vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
