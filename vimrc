@@ -24,6 +24,10 @@ set tabstop=4 " show existing tab with 4 spaces width
 set viewoptions-=options
 set wildmenu
 
+" let g:pathogen_disabled = []
+" call add(g:pathogen_disabled, 'tex-conceal.vim')
+" call add(g:pathogen_disabled, 'ultisnips')
+" let g:pathogen_blacklist = [ 'tex-conceal' ]
 execute pathogen#infect()
 silent! helptags ALL
 
@@ -127,3 +131,23 @@ hi Conceal ctermbg=none
 " Line Highlighting
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+set encoding=utf-8
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" Define map leader
+let mapleader = " "
+let g:mapleader = " "
+
+" Fast editing of the .vimrc
+map <leader>e :e! ~/.vimrc<cr>
+
+if &diff
+    highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+    highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+endif
