@@ -138,6 +138,19 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
+" Syntastic
+let g:syntastic_enable_racket_racket_checker = 1
+
+" luochen1990/rainbow setup
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\	'separately': {
+\		'*': 0,
+\		'racket': {},
+\	}
+\}
+"""""""""""""""""""""""""
+
 " Define map leader
 let mapleader = " "
 let g:mapleader = " "
@@ -157,4 +170,3 @@ autocmd InsertLeave * write
 
 " <CR> will select current selection from pop-up menu Ctrl-N search
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-
