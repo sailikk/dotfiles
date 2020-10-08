@@ -125,6 +125,7 @@ if grep -qE "(Microsoft|WSL)" /proc/version &>/dev/null; then
     alias start='cmd.exe /C start'
 fi
 
+# setup for various programs including autojump
 if [ -f /usr/share/autojump/autojump.bash ]; then
     . /usr/share/autojump/autojump.bash
 fi
@@ -143,4 +144,9 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# C-Z shortcut can be used to take a suspended job to fg
+stty susp undef
+bind '"C-z":"fg >/dev/null 2>&1"'
+# bind '"\C-z":" stty -echo; fg >/dev/null 2>&1; stty echo \015"'
 

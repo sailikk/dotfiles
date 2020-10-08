@@ -52,6 +52,7 @@ snippet beg "begin{} / end{}" bA
 endsnippet
 
 priority 100
+context "math()"
 snippet ... "ldots" iA
 \ldots
 endsnippet
@@ -74,6 +75,10 @@ snippet fig "Figure environment" b
 	\caption{${4:$3}}
 	\label{fig:${5:${3/\W+/-/g}}}
 \end{figure}
+endsnippet
+
+snippet sol "Solution"
+\textit{Sol. }	$0
 endsnippet
 
 snippet enum "Enumerate" bA
@@ -205,6 +210,7 @@ snip.rv = subprocess.check_output(['wolframscript', '-code', code])
 `
 endsnippet
 
+context "math()"
 snippet == "equals" iA
 &= $1 \\\\
 endsnippet
@@ -330,10 +336,12 @@ snippet rij "mrij" i
 (${1:x}_${2:n})_{${3:$2}\\in${4:\\N}}$0
 endsnippet
 
+context "math()"
 snippet <= "leq" iA
 \le 
 endsnippet
 
+context "math()"
 snippet >= "geq" iA
 \ge 
 endsnippet

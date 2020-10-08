@@ -115,7 +115,7 @@ colo ron
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_view_forward_search_on_start = 1
-let g:vimtex_quickfix_mode = 1
+let g:vimtex_quickfix_mode = 0
 autocmd User VimtexEventQuit VimtexClean
 
 " sirver/ultisnips options
@@ -142,8 +142,9 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let mapleader = " "
 let g:mapleader = " "
 
-" Fast editing of the .vimrc
+" Fast editing of the .vimrc and other things
 map <leader>e :e! ~/.vimrc<cr>
+map <leader>u :e! ~/.vim/UltiSnips/tex.snippets<cr>
 
 if &diff
     highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -153,4 +154,7 @@ if &diff
 endif
 
 autocmd InsertLeave * write
+
+" <CR> will select current selection from pop-up menu Ctrl-N search
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
