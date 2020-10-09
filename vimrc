@@ -140,6 +140,8 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " Syntastic
 let g:syntastic_enable_racket_racket_checker = 1
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <C-w>e :SyntasticCheck<CR>
 
 " luochen1990/rainbow setup
 let g:rainbow_active = 1
@@ -156,8 +158,10 @@ let mapleader = " "
 let g:mapleader = " "
 
 " Fast editing of the .vimrc and other things
-map <leader>e :e! ~/.vimrc<cr>
-map <leader>u :e! ~/.vim/UltiSnips/tex.snippets<cr>
+nnoremap <leader>e :e! ~/.vimrc<CR>
+nnoremap <leader>u :e! ~/.vim/UltiSnips/tex.snippets<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>s :SyntasticCheck<CR>
 
 if &diff
     highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -166,7 +170,10 @@ if &diff
     highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 endif
 
-autocmd InsertLeave * write
+" autocmd InsertLeave * write
 
 " <CR> will select current selection from pop-up menu Ctrl-N search
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+" Insert lambda with <C-\>
+inoremap <C-\> <C-v>u03bb
