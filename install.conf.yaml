@@ -20,7 +20,7 @@
     ~/.vimrc:
 
 - create:
-    - ~/.vim/undo-history
+    - ~/.config/zathura
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
