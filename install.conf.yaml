@@ -8,6 +8,7 @@
     ~/.bashrc:
     ~/.config/zathura/zathurarc:
     ~/.dircolors:
+    ~/.emacs.d:
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.inputrc:
