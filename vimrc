@@ -177,3 +177,5 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Insert lambda with <C-\>
 inoremap <C-\> <C-v>u03bb
+
+au BufReadPost dircolors set syntax=dircolors

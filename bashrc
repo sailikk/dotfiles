@@ -147,6 +147,6 @@ unset __conda_setup
 
 # C-Z shortcut can be used to take a suspended job to fg
 stty susp undef
-bind '"C-z":"fg >/dev/null 2>&1"'
+bind -x '"C-z":" fg >/dev/null 2>&1"'
 # bind '"\C-z":" stty -echo; fg >/dev/null 2>&1; stty echo \015"'
 
