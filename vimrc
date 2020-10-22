@@ -190,3 +190,6 @@ set undodir=$HOME/.vim/undo-history
 set undolevels=1000
 set undoreload=10000
 
+set showcmd
+autocmd BufNewFile,BufRead *.meals set syntax=cpp
+
