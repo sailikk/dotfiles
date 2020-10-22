@@ -1,5 +1,7 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
+                         ("gnu"       . "http://elpa.gnu.org/packages/")
+                         ("melpa"     . "http://melpa.org/packages/")))
 
 (setq ring-bell-function 'ignore)
 
@@ -13,6 +15,15 @@
 ;; available. It also means that I should be able to open Emacs for the first time
 ;; on a fresh Debian box and have my whole environment automatically installed. I'm
 ;; not /totally/ sure about that, but we're gettin' close.
+
+;; Ensure that use-package is installed.
+;;
+;; If use-package isn't already installed, it's extremely likely that this is a
+;; fresh installation! So we'll want to update the package repository and
+;; install use-package before loading the literate configuration.
+(when (not (package-installed-p 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
@@ -61,10 +72,9 @@
        (tags "PHONE"
 	     ((org-agenda-overriding-header "Phone calls to do"))))
       nil nil)))
- '(org-agenda-files
-   '("~/test/emacs/mylife.org" "~/test/emacs/1.org" "~/test/emacs/2.org"))
+ '(org-agenda-files '("~/org/school.org"))
  '(org-log-into-drawer t)
- '(package-selected-packages '(evil-org auto-compile use-package)))
+ '(package-selected-packages '(auctex undo-tree evil-org auto-compile use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -86,3 +96,18 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+
+(global-set-key (kbd "C-s") 'save-buffer)
+;; This is going to switch switching windows to C-
+(windmove-default-keybindings 'control)
+
+(use-package undo-tree)
+;; (setq TeX-view-program-list '(
+;; ("Zathura"
+;;  ("zathura %o"
+;;   (mode-io-correlate " --synctex-forward %n:0:\"%b\" -x \"emacsclient +%{line} %{input}\""))
+;;  )))
+
+;; (add-to-list 'TeX-view-program-selection
+;;             '(output-pdf "Zathura"))
+

@@ -160,8 +160,11 @@ let g:mapleader = " "
 " Fast editing of the .vimrc and other things
 nnoremap <leader>e :e! ~/.vimrc<CR>
 nnoremap <leader>u :e! ~/.vim/UltiSnips/tex.snippets<CR>
-nnoremap <leader>w :w<CR>
+" nnoremap <leader>w :w<CR>
 nnoremap <leader>s :SyntasticCheck<CR>
+nnoremap <silent> <C-s>          :update<CR>
+" vnoremap <silent> <C-S>         <C-C>:update<CR>
+" inoremap <silent> <C-S>         <C-O>:update<CR>
 
 if &diff
     highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -179,3 +182,11 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 inoremap <C-\> <C-v>u03bb
 
 au BufReadPost dircolors set syntax=dircolors
+
+" Persistent undo
+set undofile
+set undodir=$HOME/.vim/undo-history
+
+set undolevels=1000
+set undoreload=10000
+

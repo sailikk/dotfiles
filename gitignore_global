@@ -1,4 +1,11 @@
 .netrwhist
 
-*.swp
-*.swo
+# Editing tools and IDEs #
+##########################
+[._]*.sw[a-p]
+[._]*.s[a-v][a-z]
+*~
+~*
+\#*\#
+\.#*
+.ipynb_checkpoints/

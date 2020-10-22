@@ -150,3 +150,4 @@ stty susp undef
 bind -x '"\C-z":"fg >/dev/null 2>&1"'
 # bind '"\C-z":" stty -echo; fg >/dev/null 2>&1; stty echo \015"'
 
+stty -ixon
