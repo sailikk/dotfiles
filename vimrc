@@ -162,7 +162,7 @@ nnoremap <leader>e :e! ~/.vimrc<CR>
 nnoremap <leader>u :e! ~/.vim/UltiSnips/tex.snippets<CR>
 " nnoremap <leader>w :w<CR>
 nnoremap <leader>s :SyntasticCheck<CR>
-nnoremap <silent> <C-s>          :update<CR>
+nnoremap <silent> <C-x><C-s>          :update<CR>
 " vnoremap <silent> <C-S>         <C-C>:update<CR>
 " inoremap <silent> <C-S>         <C-O>:update<CR>
 
