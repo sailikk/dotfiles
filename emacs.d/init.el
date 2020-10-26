@@ -4,6 +4,13 @@
                          ("melpa"     . "http://melpa.org/packages/")))
 
 (setq ring-bell-function 'ignore)
+(defun open-user-init-file ()
+  (interactive)
+  (find-file user-init-file))
+(global-set-key (kbd "C-c i") 'open-user-init-file)
+
+(show-paren-mode 1)
+
 
 ;; * Configure =use-package=
 
@@ -74,7 +81,8 @@
       nil nil)))
  '(org-agenda-files '("~/org/school.org"))
  '(org-log-into-drawer t)
- '(package-selected-packages '(auctex undo-tree evil-org auto-compile use-package)))
+ '(package-selected-packages
+   '(dracula-theme auctex undo-tree evil-org auto-compile use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -82,6 +90,12 @@
  ;; If there is more than one, they won't work right.
  )
 
+(use-package undo-tree)
+(require 'undo-tree)
+(global-undo-tree-mode)
+(setq evil-undo-system 'undo-tree)
+
+;; Evil mode options
 (use-package evil-org
   :ensure t
   :after org
@@ -96,12 +110,12 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+(setq evil-vsplit-window-right t)
 
 (global-set-key (kbd "C-s") 'save-buffer)
 ;; This is going to switch switching windows to C-
 (windmove-default-keybindings 'control)
 
-(use-package undo-tree)
 ;; (setq TeX-view-program-list '(
 ;; ("Zathura"
 ;;  ("zathura %o"
@@ -111,3 +125,18 @@
 ;; (add-to-list 'TeX-view-program-selection
 ;;             '(output-pdf "Zathura"))
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/dracula-emacs")
+(load-theme 'dracula t)
+(set-face-attribute 'org-level-1 nil :height 1.0)
+(set-face-attribute 'org-level-2 nil :height 1.0)
+(set-face-attribute 'org-level-3 nil :height 1.0)
+
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-color-theme-solarized")
+;; (load-theme 'solarized 1)
+;; (set-frame-parameter nil 'background-mode 'light)
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (frame)
+;;             (let ((mode (if (display-graphic-p frame) 'light 'dark)))
+;;               (set-frame-parameter frame 'background-mode mode)
+;;               (set-terminal-parameter frame 'background-mode mode))
+;;             (enable-theme 'solarized)))

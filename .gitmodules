@@ -62,3 +62,12 @@
 	path = vim/bundle/rainbow
     url = https://github.com/luochen1990/rainbow.git
     ignore = dirty
+[submodule "emacs.d/vendor/emacs"]
+	path = emacs.d/vendor/emacs
+	url = https://github.com/dracula/emacs.git
+[submodule "emacs.d/vendor/emacs-color-theme-solarized"]
+	path = emacs.d/vendor/emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git
+[submodule "emacs.d/vendor/dracula-emacs"]
+	path = emacs.d/vendor/dracula-emacs
+	url = https://github.com/dracula/emacs
