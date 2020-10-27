@@ -130,7 +130,7 @@ hi Conceal ctermbg=none
 
 " Line Highlighting
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%102v', 100)
 
 " Airline
 set encoding=utf-8
@@ -158,13 +158,11 @@ let mapleader = " "
 let g:mapleader = " "
 
 " Fast editing of the .vimrc and other things
-nnoremap <leader>e :e! ~/.vimrc<CR>
-nnoremap <leader>u :e! ~/.vim/UltiSnips/tex.snippets<CR>
-" nnoremap <leader>w :w<CR>
-nnoremap <leader>s :SyntasticCheck<CR>
-nnoremap <silent> <C-x><C-s>          :update<CR>
-" vnoremap <silent> <C-S>         <C-C>:update<CR>
-" inoremap <silent> <C-S>         <C-O>:update<CR>
+nnoremap <leader>e           :e! ~/.vimrc<CR>
+nnoremap <leader>u           :e! ~/.vim/UltiSnips/tex.snippets<CR>
+nnoremap <leader>s           :SyntasticCheck<CR>
+nnoremap <silent> <C-x><C-s> :update<CR>
+nnoremap ZX                  :xa<CR>
 
 if &diff
     highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -192,4 +190,26 @@ set undoreload=10000
 
 set showcmd
 autocmd BufNewFile,BufRead *.wlp4 set syntax=cpp
+
+"" vim-gutentags
+"" Config from here: reddit.com/r/vim/comments/d77t6j
+let g:gutentags_add_default_project_roots = 0 
+let g:gutentags_project_root = ['*.cpp', '.git']
+command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+let g:gutentags_ctags_extra_args = ['--tag-relative=yes', '--fields=+ailmnS',]
+let g:gutentags_ctags_exclude = ['.git', '.svg', '.hg', '/tests/', 'build', 'dist',
+                    \ 'sites//files/', 'bin', 'node_modules', 'bower_components', 'cache',
+                    \ 'compiled', 'docs', 'example', 'bundle', 'vendor', '.md',
+                    \ '-lock.json', '.lock', 'bundle.js', 'build.js', '.rc', '.json',
+                    \ '.min.', '.map', '.bak', '.zip', '.pyc', '.class', '.sln',
+                    \ '.Master', '.csproj', '.tmp', '.csproj.user', '.cache', '.pdb',
+                    \ 'tags', 'cscope.', '.css', '.less', '.scss', '.exe', '.dll',
+                    \ '.mp3', '.ogg', '.flac', '.swp', '.swo', '.bmp', '.gif', '.ico',
+                    \ '.jpg', '.png', '.rar', '.zip', '.tar', '.tar.gz', '.tar.xz', '.tar.bz2',
+                    \ '.pdf', '.doc', '.docx', '.ppt', '.pptx',]
 

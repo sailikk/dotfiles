@@ -71,3 +71,6 @@
 [submodule "emacs.d/vendor/dracula-emacs"]
 	path = emacs.d/vendor/dracula-emacs
 	url = https://github.com/dracula/emacs
+[submodule "vim/bundle/vim-gutentags"]
+	path = vim/bundle/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags
