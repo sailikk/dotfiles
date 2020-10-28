@@ -1,3 +1,4 @@
+(add-to-list 'load-path "~/.emacs.d/vendor/use-package")
 (require 'package)
 (setq package-archives '(("org"       . "http://orgmode.org/elpa/")
                          ("gnu"       . "http://elpa.gnu.org/packages/")
@@ -9,7 +10,15 @@
   (find-file user-init-file))
 (global-set-key (kbd "C-c i") 'open-user-init-file)
 
-(show-paren-mode 1)
+(show-paren-mode 1) ; highlight matching parentheses
+;; improve scrolling
+(setf scroll-margin 5
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01)
+(setq-default indent-tabs-mode nil) ; use spaces instead of tabs
+(setq inhibit-splash-screen t) ;; inhibit splash screen at start
 
 
 ;; * Configure =use-package=
@@ -47,9 +56,6 @@
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; -*- mode: elisp -*-
-
-;; Disable the splash screen (to enable it agin, replace the t with 0)
-(setq inhibit-splash-screen t)
 
 ;; Enable transient mark mode
 (transient-mark-mode 1)

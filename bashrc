@@ -124,6 +124,7 @@ if grep -qE "(Microsoft|WSL)" /proc/version &>/dev/null; then
     export DISPLAY=:0
     alias start='cmd.exe /C start'
 fi
+export DISPLAY=:0
 
 # setup for various programs including autojump
 if [ -f /usr/share/autojump/autojump.bash ]; then
