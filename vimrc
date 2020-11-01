@@ -143,6 +143,7 @@ let g:syntastic_enable_racket_racket_checker = 1
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <C-w>e :SyntasticCheck<CR>
 
+"""""""""""""""""""""""""
 " luochen1990/rainbow setup
 let g:rainbow_active = 1
 let g:rainbow_conf = {
@@ -151,6 +152,10 @@ let g:rainbow_conf = {
 \		'racket': {},
 \	}
 \}
+"""""""""""""""""""""""""
+" guns/vim-sexp setup
+" let g:sexp_filetypes = 'scheme,racket'
+let g:sexp_filetypes = 'clojure,scheme,lisp,timl,racket'
 """""""""""""""""""""""""
 
 " Define map leader
@@ -163,6 +168,12 @@ nnoremap <leader>u           :e! ~/.vim/UltiSnips/tex.snippets<CR>
 nnoremap <leader>s           :SyntasticCheck<CR>
 nnoremap <silent> <C-x><C-s> :update<CR>
 nnoremap ZX                  :xa<CR>
+nnoremap <M-k>               :joe
+" <CR> will select current selection from pop-up menu Ctrl-N search
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" Insert lambda with <C-\>
+inoremap <C-\> <C-v>u03bb
+
 
 if &diff
     highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
@@ -170,14 +181,6 @@ if &diff
     highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
     highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 endif
-
-" autocmd InsertLeave * write
-
-" <CR> will select current selection from pop-up menu Ctrl-N search
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-
-" Insert lambda with <C-\>
-inoremap <C-\> <C-v>u03bb
 
 au BufReadPost dircolors set syntax=dircolors
 
@@ -211,5 +214,4 @@ let g:gutentags_ctags_exclude = ['.git', '.svg', '.hg', '/tests/', 'build', 'dis
                     \ 'tags', 'cscope.', '.css', '.less', '.scss', '.exe', '.dll',
                     \ '.mp3', '.ogg', '.flac', '.swp', '.swo', '.bmp', '.gif', '.ico',
                     \ '.jpg', '.png', '.rar', '.zip', '.tar', '.tar.gz', '.tar.xz', '.tar.bz2',
-                    \ '.pdf', '.doc', '.docx', '.ppt', '.pptx',]
-
+                    \ '.pdf', '.doc', '.docx', '.ppt', '.pptx', '.tex',]
