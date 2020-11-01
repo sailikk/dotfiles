@@ -77,3 +77,6 @@
 [submodule "emacs.d/vendor/racket-mode"]
 	path = emacs.d/vendor/racket-mode
 	url = https://github.com/greghendershott/racket-mode.git
+[submodule "vim/bundle/vim-sexp"]
+	path = vim/bundle/vim-sexp
+	url = https://github.com/guns/vim-sexp
