@@ -65,15 +65,20 @@
 [submodule "emacs.d/vendor/emacs"]
 	path = emacs.d/vendor/emacs
 	url = https://github.com/dracula/emacs.git
+    ignore = dirty
 [submodule "emacs.d/vendor/emacs-color-theme-solarized"]
 	path = emacs.d/vendor/emacs-color-theme-solarized
 	url = https://github.com/sellout/emacs-color-theme-solarized.git
+    ignore = dirty
 [submodule "emacs.d/vendor/dracula-emacs"]
 	path = emacs.d/vendor/dracula-emacs
 	url = https://github.com/dracula/emacs
+    ignore = dirty
 [submodule "vim/bundle/vim-gutentags"]
 	path = vim/bundle/vim-gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags
+    ignore = dirty
 [submodule "vim/bundle/vim-sexp"]
 	path = vim/bundle/vim-sexp
 	url = https://github.com/guns/vim-sexp
+    ignore = dirty
