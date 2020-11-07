@@ -159,9 +159,12 @@ let g:rainbow_conf = {
 let g:sexp_filetypes = 'clojure,scheme,lisp,timl,racket'
 """""""""""""""""""""""""
 
-" Define map leader
+" Define <Leader> to be <space>
 let mapleader = " "
 let g:mapleader = " "
+" Define <LocalLeader> to be ,
+let maplocalleader = ","
+let g:maplocalleader = ","
 
 " Fast editing of the .vimrc and other things
 nnoremap <leader>e           :e! ~/.vimrc<CR>
@@ -173,8 +176,7 @@ nnoremap <silent> <C-x>1     :only<CR>
 " <CR> will select current selection from pop-up menu Ctrl-N search
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 " Insert lambda with <C-\>
-inoremap <C-\> <C-v>u03bb
-
+inoremap <C-\> λ
 
 if &diff
     highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
