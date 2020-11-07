@@ -4,16 +4,16 @@
 (setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
                          ("melpa"     . "http://melpa.org/packages/")))
 
-;; ;; * Configure =use-package=
+;; * Configure =use-package=
 
-;; ;; I use =use-package= to install and configure my packages. My =init.el= includes the
-;; ;; initial setup for =package.el= and ensures that =use-package= is installed, since I
-;; ;; wanna do that right away.
+;; I use =use-package= to install and configure my packages. My =init.el= includes the
+;; initial setup for =package.el= and ensures that =use-package= is installed, since I
+;; wanna do that right away.
  
-;; ;; This makes sure that =use-package= will install the package if it's not already
-;; ;; available. It also means that I should be able to open Emacs for the first time
-;; ;; on a fresh Debian box and have my whole environment automatically installed. I'm
-;; ;; not /totally/ sure about that, but we're gettin' close.
+;; This makes sure that =use-package= will install the package if it's not already
+;; available. It also means that I should be able to open Emacs for the first time
+;; on a fresh Debian box and have my whole environment automatically installed. I'm
+;; not /totally/ sure about that, but we're gettin' close.
 
 ;; Ensure that use-package is installed.
 ;;
@@ -31,11 +31,15 @@
 (use-package auto-compile
   :config (auto-compile-on-load-mode))
 
+;; Some global settings that don't require packages
 (setq ring-bell-function 'ignore)
 (defun open-user-init-file ()
   (interactive)
   (find-file user-init-file))
 (global-set-key (kbd "C-c i") 'open-user-init-file)
+
+(set-face-attribute 'default nil :height 100) ; Font size
+(if (window-system) (set-frame-size (selected-frame) 140 40)) ;; Initial Frame Size
 
 (show-paren-mode 1) ; highlight matching parentheses
 (setq auto-window-vscroll nil)
@@ -185,5 +189,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(set-face-attribute 'default nil :height 100)

@@ -6,21 +6,21 @@ set backspace=indent,eol,start
 set clipboard=unnamedplus " system copy-paste support 1. get vim-gtk 2. set this 3. for WSL, vcxsrv
 set complete-=i
 set display+=lastline
-set expandtab " On pressing tab, insert 4 spaces
-set formatoptions+=j " Delete comment character when joining commented lines
+set expandtab             " On pressing tab, insert 4 spaces
+set formatoptions+=j      " Delete comment character when joining commented lines
 set ignorecase
 set incsearch
 set laststatus=2
-set mouse=nic          " Add mouse support for scrolling
+set mouse=nic             " Add mouse support for scrolling
 set nrformats-=octal
 set number
 set ruler
 set sessionoptions-=options
-set shiftwidth=4 " when indenting with '>', use 4 spaces width
+set shiftwidth=4          " when indenting with '>', use 2 spaces width
 set smartcase
 set smarttab
 set splitright
-set tabstop=4 " show existing tab with 4 spaces width
+set tabstop=4             " show existing tab with 4 spaces width
 set viewoptions-=options
 set wildmenu
 
@@ -142,6 +142,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:syntastic_enable_racket_racket_checker = 1
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 nnoremap <C-w>e :SyntasticCheck<CR>
+let g:syntastic_tex_lacheck_quiet_messages = { 'regex': '\Vpossible unwanted space at' }
 
 """""""""""""""""""""""""
 " luochen1990/rainbow setup
@@ -168,7 +169,7 @@ nnoremap <leader>u           :e! ~/.vim/UltiSnips/tex.snippets<CR>
 nnoremap <leader>s           :SyntasticCheck<CR>
 nnoremap <silent> <C-x><C-s> :update<CR>
 nnoremap ZX                  :xa<CR>
-nnoremap <M-k>               :joe
+nnoremap <silent> <C-x>1     :only<CR>
 " <CR> will select current selection from pop-up menu Ctrl-N search
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 " Insert lambda with <C-\>
