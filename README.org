@@ -1,6 +1,6 @@
 * My Dotfiles
 
 These use [[https://github.com/anishathalye/dotbot][dotbot]]. My setup will work immediately on any computer. Steps:
-1. `git clone https://github.com/sailikk/dotfiles .dotfiles`
-2. `cd .dotfiles`
-3. `./install`
+1. ~git clone https://github.com/sailikk/dotfiles .dotfiles~
+2. ~cd .dotfiles~
+3. ~./install~
