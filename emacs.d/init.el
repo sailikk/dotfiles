@@ -38,17 +38,20 @@
   (find-file user-init-file))
 (global-set-key (kbd "C-c i") 'open-user-init-file)
 
-(set-face-attribute 'default nil :height 100) ; Font size
-(if (window-system) (set-frame-size (selected-frame) 140 40)) ;; Initial Frame Size
+(set-face-attribute 'default nil :height 95) ; Font size
+(if (window-system) (set-frame-size (selected-frame) 180 40)) ;; Initial Frame Size
 
+;; Very Minor Modes (?)
 (show-paren-mode 1) ; highlight matching parentheses
+(savehist-mode 1)
+
 (setq auto-window-vscroll nil)
 (xterm-mouse-mode 1) ; enable mouse support in terminal
 ;; better mouse scroll
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
 ; (setq mouse-wheel-progressive-speed nil)
 ;; improve scrolling
-(setf scroll-margin 5
+(setf scroll-margin 1
       scroll-step 1
       scroll-conservatively 10000
       scroll-up-aggressively 0.01
@@ -73,17 +76,11 @@
 (setq org-agenda-restore-windows-after-quit t)
 (setq org-agenda-show-future-repeats nil)
 (require 'org-mouse)
-;; Make Org mode work with files ending in .org
-;; (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-;; The above is the default in recent emacsen
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(dracula))
- '(custom-safe-themes
-   '("24714e2cb4a9d6ec1335de295966906474fdb668429549416ed8636196cb1441" default))
  '(org-agenda-custom-commands
    '(("n" "Agenda and all TODOs"
       ((agenda "" nil)
@@ -98,7 +95,7 @@
  '(org-agenda-files '("~/org/school.org"))
  '(org-log-into-drawer t)
  '(package-selected-packages
-   '(rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
+   '(ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
 
 ;; Must be done before evil
 (use-package undo-tree)
@@ -123,14 +120,56 @@
 (evil-mode 1)
 (setq evil-vsplit-window-right t)
 
+;; key bindings
+(evil-ex-define-cmd "!" 'shell-command)
+;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+(define-key evil-normal-state-map ";" 'buffer-menu)
+
+(with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol)
+    ;; make evil-search-word look for symbol rather than word boundaries
+    (setq-default evil-symbol-word-search t))
+
 ;; Use evil-surround
 (use-package evil-surround
   :ensure t
   :config
   (global-evil-surround-mode 1))
 
-;; ;; This is going to switch switching windows to C-up, right, left, down
-(windmove-default-keybindings 'control)
+;; Ivy
+;; (require 'ivy)
+;; (ivy-mode 1)
+;; (counsel-mode 1)
+;; (setq ivy-use-virtual-buffers t)
+;; (setq enable-recursive-minibuffers t)
+;; ;; enable this if you want `swiper' to use it
+;; ;; (setq search-default-mode #'char-fold-to-regexp)
+;; (global-set-key "\C-s" 'swiper)
+;; (global-set-key (kbd "C-c C-r") 'ivy-resume)
+;; (global-set-key (kbd "<f6>") 'ivy-resume)
+;; (global-set-key (kbd "M-x") 'counsel-M-x)
+;; (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+;; (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+;; (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+;; (global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
+;; (global-set-key (kbd "<f1> l") 'counsel-find-library)
+;; (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+;; (global-set-key (kbd "C-c g") 'counsel-git)
+;; (global-set-key (kbd "C-c j") 'counsel-git-grep)
+;; (global-set-key (kbd "C-c k") 'counsel-ag)
+;; (global-set-key (kbd "C-x l") 'counsel-locate)
+;; (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+;; (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+;; ;; Custom from reddit.com/r/emacs/comments/6i8rmb
+;; (global-set-key (kbd "C-p") 'ivy-previous-line)
+;; (global-set-key (kbd "C-n") 'ivy-next-line)
+
+;; This is going to switch switching windows to C-up, right, left, down
+;; (windmove-default-keybindings 'control)
 
 ;; ;; (setq TeX-view-program-list '(
 ;; ;; ("Zathura"
@@ -142,24 +181,35 @@
 ;; ;;             '(output-pdf "Zathura"))
 
 ;; Themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/dracula-emacs")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-color-theme-solarized")
+
 ;; Dracula Theme
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/dracula-emacs")
 ;; (load-theme 'dracula t)
-;; (set-face-attribute 'org-level-1 nil :height 1.0)
-;; (set-face-attribute 'org-level-2 nil :height 1.0)
-;; (set-face-attribute 'org-level-3 nil :height 1.0)
+(set-face-attribute 'org-level-1 nil :height 1.0)
+(set-face-attribute 'org-level-2 nil :height 1.0)
+(set-face-attribute 'org-level-3 nil :height 1.0)
 
 ;; Solarized Theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-color-theme-solarized")
-(setf solarized-termcolors 256)
-(load-theme 'solarized t)
+;; (setf solarized-termcolors 256)
+;; (load-theme 'solarized t)
 ; (set-frame-parameter nil 'background-mode 'light)
-(add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (let ((mode (if (display-graphic-p frame) 'light 'dark)))
-              (set-frame-parameter frame 'background-mode mode)
-              (set-terminal-parameter frame 'background-mode mode))
-            (enable-theme 'solarized)))
+
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (frame)
+;;             (let ((mode (if (display-graphic-p frame) 'light 'dark)))
+;;               (set-frame-parameter frame 'background-mode 'light)
+;;               (set-terminal-parameter frame 'background-mode 'dark))
+;;             (enable-theme 'solarized)))
+
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (frame)
+;;             (set-terminal-parameter frame 'background-mode 'dark)))
+
+;; Different themes for terminal and GUI
+(if (display-graphic-p) 
+    (load-theme 'solarized 1) 
+  (load-theme 'dracula 1))
 
 ; Lisps
 ;; Racket
