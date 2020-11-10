@@ -169,7 +169,10 @@ let g:maplocalleader = ","
 " Fast editing of the .vimrc and other things
 nnoremap <leader>e           :e! ~/.vimrc<CR>
 nnoremap <leader>u           :e! ~/.vim/UltiSnips/tex.snippets<CR>
+nnoremap <leader>h           :set hlsearch!<CR>
+nnoremap <leader>p           :set paste!<CR>
 nnoremap <leader>s           :SyntasticCheck<CR>
+nnoremap <leader>t           :NERDTreeToggle<CR>
 nnoremap <silent> <C-x><C-s> :update<CR>
 nnoremap ZX                  :xa<CR>
 nnoremap <silent> <C-x>1     :only<CR>
