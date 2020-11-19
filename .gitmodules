@@ -82,3 +82,9 @@
 	path = vim/bundle/vim-sexp
 	url = https://github.com/guns/vim-sexp
     ignore = dirty
+[submodule "vim/bundle/vim-sexp-mappings-for-regular-people"]
+	path = vim/bundle/vim-sexp-mappings-for-regular-people
+	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people
+[submodule "vim/bundle/vim-repeat"]
+	path = vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git
