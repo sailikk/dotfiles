@@ -162,9 +162,6 @@ let g:sexp_filetypes = 'clojure,scheme,lisp,timl,racket'
 " Define <Leader> to be <space>
 let mapleader = " "
 let g:mapleader = " "
-" Define <LocalLeader> to be ,
-let maplocalleader = ","
-let g:maplocalleader = ","
 
 " Fast editing of the .vimrc and other things
 nnoremap <leader>e           :e! ~/.vimrc<CR>
