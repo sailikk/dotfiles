@@ -196,6 +196,7 @@ set undoreload=10000
 
 set showcmd
 autocmd BufNewFile,BufRead *.wlp4 set syntax=cpp
+autocmd BufNewFile,BufRead *.wlp set syntax=cpp
 
 "" vim-gutentags
 "" Config from here: reddit.com/r/vim/comments/d77t6j
