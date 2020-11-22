@@ -155,7 +155,6 @@ let g:rainbow_conf = {
 \}
 """""""""""""""""""""""""
 " guns/vim-sexp setup
-" let g:sexp_filetypes = 'scheme,racket'
 let g:sexp_filetypes = 'clojure,scheme,lisp,timl,racket'
 """""""""""""""""""""""""
 
@@ -170,8 +169,10 @@ nnoremap <leader>h           :set hlsearch!<CR>
 nnoremap <leader>p           :set paste!<CR>
 nnoremap <leader>s           :SyntasticCheck<CR>
 nnoremap <leader>t           :NERDTreeToggle<CR>
+" Um, nothing suspicious here (has already converted to Church of Emacs)
 nnoremap <silent> <C-x><C-s> :update<CR>
-nnoremap ZX                  :xa<CR>
+nnoremap <C-c>               <C-c>
+nnoremap <silent> <C-x><C-c> :xa<CR>
 nnoremap <silent> <C-x>1     :only<CR>
 " <CR> will select current selection from pop-up menu Ctrl-N search
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
