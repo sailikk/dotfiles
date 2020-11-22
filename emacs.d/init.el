@@ -46,20 +46,37 @@
 (global-hi-lock-mode 1)
 (transient-mark-mode 1) ;; Enable transient mark mode
 
+;; From here: emacs.wordpress.com/2007/01/16/quick-and-dirty-code-folding/
+(defun sailik/toggle-selective-display (column)
+  (interactive "P")
+  (set-selective-display 
+   (if selective-display nil (or column 1))))
+(global-set-key (kbd "C-c s") 'sailik/toggle-selective-display)
+
 ;; Basic Quality of Life Settings
 (setq auto-window-vscroll nil)
 (xterm-mouse-mode 1) ; enable mouse support in terminal
 ;; better mouse scroll
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
-; (setq mouse-wheel-progressive-speed nil)
+;; (setq mouse-wheel-progressive-speed nil)
 ;; improve scrolling
 (setf scroll-margin 1
       scroll-step 1
       scroll-conservatively 10000
       scroll-up-aggressively 0.01
       scroll-down-aggressively 0.01)
+
 (setq-default indent-tabs-mode nil) ; use spaces instead of tabs
 (setq inhibit-splash-screen t) ;; inhibit splash screen at start
+
+;; (require 'sublimity)
+;; (require 'sublimity-scroll)
+;; (require 'sublimity-attractive)
+;; (setq sublimity-scroll-drift-length 1) ; sublimity-scroll-weight 4)
+
+(use-package avy
+  :bind*
+  ("C-;" . evil-avy-goto-char-2))
 
 (use-package dashboard
   :init
@@ -79,6 +96,8 @@
         org-agenda-restore-windows-after-quit t
         org-agenda-show-future-repeats nil))
 (require 'org-mouse)
+;; Midnight was just a number anyways
+(setq org-extend-today-until 5)
 
 (use-package org-journal
   :ensure t
@@ -87,7 +106,16 @@
   (setq org-journal-dir "~/org/journal/"
         org-journal-date-format "%A, %d %B %Y"
         org-journal-time-format "%I:%M %p"))
-(global-set-key (kbd "C-c o") 'org-journal-new-entry)
+(global-set-key (kbd "C-c j") 'org-journal-new-entry)
+
+;; Markdown mode configuration
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
 (use-package anki-editor)
 
@@ -143,7 +171,7 @@
     (setq-default evil-symbol-word-search t))
 
 ;; Ivy Configuration
-(require 'ivy)
+(use-package ivy)
 (ivy-mode 1)
 (counsel-mode 1)
 (setq ivy-use-virtual-buffers t)
@@ -163,10 +191,11 @@
 (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 (global-set-key (kbd "C-c g") 'counsel-git)
-(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(global-set-key (kbd "C-c p") 'counsel-git-grep)
 (global-set-key (kbd "C-c k") 'counsel-ag)
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+(global-set-key (kbd "C-'") 'swiper-avy)
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 
 ;; This is going to switch switching windows to C-up, right, left, down
@@ -242,7 +271,7 @@
  '(org-agenda-files '("~/org/school.org"))
  '(org-log-into-drawer t)
  '(package-selected-packages
-   '(ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
+   '(avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
