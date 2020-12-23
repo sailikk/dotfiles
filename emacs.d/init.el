@@ -46,6 +46,55 @@
 (global-hi-lock-mode 1)
 (transient-mark-mode 1) ;; Enable transient mark mode
 
+(use-package all-the-icons)
+
+;; Japanese font. Well, this applies to all CJK glyphs anyway
+(set-fontset-font "fontset-default" 'han "Migu 2M")
+
+;; Define a sentence as a period followed by one or more spaces.
+(setq sentence-end-double-space nil)
+(defun ospl/unfill-paragraph ()
+  "Unfill the paragraph at point.
+
+This repeatedly calls `join-line' until the whole paragraph does
+not contain hard line breaks any more."
+  (interactive)
+  (forward-paragraph 1)
+  (forward-paragraph -1)
+  (while (looking-at paragraph-start)
+    (forward-line 1))
+  (let ((beg (point)))
+    (forward-paragraph 1)
+    (backward-char 1)
+    (while (> (point) beg)
+      (join-line)
+      (beginning-of-line))))
+
+(defun ospl/fill-paragraph ()
+  "Fill the current paragraph until there is one sentence per line.
+
+This unfills the paragraph, and places hard line breaks after each sentence."
+  (interactive)
+  (save-excursion
+    (fill-paragraph)         ; takes care of putting 2 spaces if needed
+    (ospl/unfill-paragraph)  ; remove hard line breaks
+
+    ;; insert line breaks again
+    (let ((end-of-paragraph (make-marker)))
+      (save-excursion
+        (forward-paragraph)
+        (backward-sentence)
+        (forward-sentence)
+        (set-marker end-of-paragraph (point)))
+      (forward-sentence) 
+      (while (< (point) end-of-paragraph)
+        (just-one-space)
+        (delete-backward-char 1)
+        (newline)
+        (forward-sentence))
+      (set-marker end-of-paragraph nil))))
+(global-set-key (kbd "C-c f") 'ospl/fill-paragraph)
+
 ;; From here: emacs.wordpress.com/2007/01/16/quick-and-dirty-code-folding/
 (defun sailik/toggle-selective-display (column)
   (interactive "P")
@@ -73,17 +122,14 @@
 ;; (require 'sublimity-scroll)
 ;; (require 'sublimity-attractive)
 ;; (setq sublimity-scroll-drift-length 1) ; sublimity-scroll-weight 4)
+;; (sublimity-mode 1)
+
+;; Allows use of C-x C-j, the dired-jump shortcut
+(require 'dired-x)
 
 (use-package avy
   :bind*
   ("C-;" . evil-avy-goto-char-2))
-
-(use-package dashboard
-  :init
-  (add-hook 'after-init-hook 'dashboard-refresh-buffer)
-  :config
-  (setq dashboard-startup-banner 'logo)
-  (dashboard-setup-startup-hook))
 
 ;; Org mode configuration
 (use-package org
@@ -108,6 +154,30 @@
         org-journal-time-format "%I:%M %p"))
 (global-set-key (kbd "C-c j") 'org-journal-new-entry)
 
+(use-package htmlize)
+
+;; Optional
+;; (setq org-html-htmlize-output-type 'css)
+;; (setq org-html-htmlize-font-prefix "org-")
+
+(defun my/org-inline-css-hook (exporter)
+  "Insert custom inline css to automatically set the
+background of code to whatever theme I'm using's background"
+  (when (eq exporter 'html)
+    (let* ((my-pre-bg (face-background 'default))
+           (my-pre-fg (face-foreground 'default)))
+      (setq
+       org-html-head-extra
+       (concat
+        org-html-head-extra
+        (format "<style type=\"text/css\">\n pre.src {background-color: %s; color: %s;}</style>\n"
+                my-pre-bg my-pre-fg))))))
+(add-hook 'org-export-before-processing-hook 'my/org-inline-css-hook)
+
+;; Miscellaneous settings about org htmlize
+;; (setq org-html-htmlize-output-type 'css)
+;; (setq org-html-head-include-default-style nil)
+
 ;; Markdown mode configuration
 (use-package markdown-mode
   :ensure t
@@ -120,6 +190,8 @@
 (use-package anki-editor)
 
 ;; Must be done before evil
+(setq evil-want-C-i-jump nil)
+
 (use-package undo-tree)
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -170,6 +242,12 @@
     ;; make evil-search-word look for symbol rather than word boundaries
     (setq-default evil-symbol-word-search t))
 
+(use-package yasnippet)
+(yas-global-mode 1)
+(add-hook 'yas-minor-mode-hook (lambda () (yas-activate-extra-mode 'fundamental-mode)))
+;; Set the following if you don't want automatic snippet indentation
+;; (setq yas-indent-line 'auto)
+
 ;; Ivy Configuration
 (use-package ivy)
 (ivy-mode 1)
@@ -213,19 +291,30 @@
 ;; Themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/dracula-emacs")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-color-theme-solarized")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/solarized")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/vendor/emacs-material-theme")
+(load-theme 'dracula t)
 
-;; Dracula Theme
+;; Don't make org mode heading font bigger
+(setq dracula-enlarge-headings nil)
+(set-face-attribute 'org-document-title nil :height 1.0)
 (set-face-attribute 'org-level-1 nil :height 1.0)
 (set-face-attribute 'org-level-2 nil :height 1.0)
 (set-face-attribute 'org-level-3 nil :height 1.0)
 
 ;; Solarized Theme
-(setf solarized-termcolors 256)
+;; (setf solarized-termcolors 256)
+;; (load-theme 'solarized t)
+
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (frame)
+;;             (let ((mode (if (display-graphic-p frame) 'light 'dark)))
+;;               (set-frame-parameter frame 'background-mode mode)
+;;               (set-terminal-parameter frame 'background-mode mode))
+;;             (load-theme 'solarized t)))
 
 ;; Different themes for terminal and GUI
-(if (display-graphic-p) 
-    (load-theme 'solarized t)
-  (load-theme 'dracula t))
+;; (if (display-graphic-p) 
 
 ; Lisps
 ;; Racket
@@ -250,6 +339,9 @@
                    (paredit-mode)
                    (rainbow-delimiters-mode))))
 
+;; Scribble Mode
+(use-package scribble-mode)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -271,7 +363,7 @@
  '(org-agenda-files '("~/org/school.org"))
  '(org-log-into-drawer t)
  '(package-selected-packages
-   '(avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
+   '(dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -279,3 +371,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(use-package dashboard
+  :init
+  (add-hook 'after-init-hook 'dashboard-refresh-buffer)
+  :config
+  (require 'org-agenda)
+  (setq dashboard-startup-banner 'logo)
+  (dashboard-setup-startup-hook))
