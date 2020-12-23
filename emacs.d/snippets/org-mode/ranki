@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: racket_anki_header
+# key: <ranki
+# --
+* $1
+  :PROPERTIES:
+  :ANKI_DECK: Racket
+  :ANKI_NOTE_TYPE: CS Racket
+  :ANKI_TAGS: programming racket
+  :END:
+** Front Text$2
+** Front Code$3
+** Back Text$4
+** Back Code$0
