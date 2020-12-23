@@ -17,6 +17,7 @@ set number
 set ruler
 set sessionoptions-=options
 set shiftwidth=4          " when indenting with '>', use 2 spaces width
+set showcmd
 set smartcase
 set smarttab
 set splitright
@@ -109,7 +110,7 @@ if empty(mapcheck('<C-W>', 'i'))
   inoremap <C-W> <C-G>u<C-W>
 endif
 
-colo ron
+colorscheme ron
 
 " lervag/vimtex options
 let g:tex_flavor = 'latex'
@@ -195,12 +196,8 @@ set undodir=$HOME/.vim/undo-history
 set undolevels=1000
 set undoreload=10000
 
-set showcmd
-autocmd BufNewFile,BufRead *.wlp4 set syntax=cpp
-autocmd BufNewFile,BufRead *.wlp set syntax=cpp
-
-"" vim-gutentags
-"" Config from here: reddit.com/r/vim/comments/d77t6j
+" vim-gutentags
+" Config from here: reddit.com/r/vim/comments/d77t6j
 let g:gutentags_add_default_project_roots = 0 
 let g:gutentags_project_root = ['*.cpp', '.git']
 command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
