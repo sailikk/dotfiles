@@ -106,10 +106,6 @@ if ! shopt -oq posix; then
     fi
 fi
 
-if [ -f ~/.dircolors ]; then
-    eval "`dircolors -b ~/.dircolors`"
-fi
-
 # set PATH so it includes user's private ~/.local/bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -152,3 +148,6 @@ stty susp undef
 # bind '"\C-z":" stty -echo; fg >/dev/null 2>&1; stty echo \015"'
 
 stty -ixon
+
+# Haskell ghcup
+[ -f "/Users/skundu/.ghcup/env" ] && source "/Users/skundu/.ghcup/env" # ghcup-env
