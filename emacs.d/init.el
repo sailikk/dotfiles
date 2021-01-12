@@ -1,4 +1,5 @@
 (require 'package)
+
 (package-initialize)
 (setq package-archives '(("gnu"       . "http://elpa.gnu.org/packages/")
                          ("melpa"     . "http://melpa.org/packages/")))
@@ -30,6 +31,12 @@
 (use-package auto-compile
   :config (auto-compile-on-load-mode))
 
+;; Mac essential configuration
+(setq ns-command-modifier 'meta)
+
+;; This works for copying, but not pasting for some reason
+(setq select-enable-clipboard t)
+
 ;; Some global settings that don't require packages
 (setq ring-bell-function 'ignore)
 (defun open-user-init-file ()
@@ -49,7 +56,8 @@
 (use-package all-the-icons)
 
 ;; Japanese font. Well, this applies to all CJK glyphs anyway
-(set-fontset-font "fontset-default" 'han "Migu 2M")
+;; Will not work on a Mac terminal! Careful!
+;; (set-fontset-font "fontset-default" 'han "Migu 2M")
 
 ;; Define a sentence as a period followed by one or more spaces.
 (setq sentence-end-double-space nil)
@@ -363,7 +371,7 @@ background of code to whatever theme I'm using's background"
  '(org-agenda-files '("~/org/school.org"))
  '(org-log-into-drawer t)
  '(package-selected-packages
-   '(dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
+   '(haskell-mode dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
