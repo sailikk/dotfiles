@@ -6,7 +6,7 @@
 
 - link:
     ~/.bashrc:
-    ~/.config/zathura/zathurarc:
+    ~/.config:
     ~/.dircolors:
     ~/.emacs.d:
     ~/.gitconfig:
