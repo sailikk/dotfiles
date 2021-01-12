@@ -369,9 +369,9 @@ background of code to whatever theme I'm using's background"
              ((org-agenda-overriding-header "Phone calls to do"))))
       nil nil)))
  '(org-agenda-files '("~/org/school.org"))
- '(org-log-into-drawer t)
+ '(org-log-into-drawer "CLOCKING")
  '(package-selected-packages
-   '(haskell-mode dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
+   '(haskell-mode ddskk dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
