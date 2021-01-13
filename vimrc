@@ -170,6 +170,7 @@ nnoremap <leader>h           :set hlsearch!<CR>
 nnoremap <leader>p           :set paste!<CR>
 nnoremap <leader>s           :SyntasticCheck<CR>
 nnoremap <leader>t           :NERDTreeToggle<CR>
+nnoremap <leader>n           :set number!<CR>
 " Um, nothing suspicious here (has already converted to Church of Emacs)
 nnoremap <silent> <C-x><C-s> :update<CR>
 nnoremap <C-c>               <C-c>
@@ -198,7 +199,7 @@ set undoreload=10000
 
 " vim-gutentags
 " Config from here: reddit.com/r/vim/comments/d77t6j
-let g:gutentags_add_default_project_roots = 0 
+let g:gutentags_add_default_project_roots = 0
 let g:gutentags_project_root = ['*.cpp', '.git']
 command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
 let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
