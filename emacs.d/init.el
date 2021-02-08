@@ -251,6 +251,7 @@ background of code to whatever theme I'm using's background"
     (setq-default evil-symbol-word-search t))
 
 (use-package yasnippet)
+(use-package yasnippet-snippets)
 (yas-global-mode 1)
 (add-hook 'yas-minor-mode-hook (lambda () (yas-activate-extra-mode 'fundamental-mode)))
 ;; Set the following if you don't want automatic snippet indentation
@@ -371,7 +372,7 @@ background of code to whatever theme I'm using's background"
  '(org-agenda-files '("~/org/school.org"))
  '(org-log-into-drawer "CLOCKING")
  '(package-selected-packages
-   '(haskell-mode ddskk dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
+   '(exec-path-from-shell org-download magit haskell-mode ddskk dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -387,3 +388,28 @@ background of code to whatever theme I'm using's background"
   (require 'org-agenda)
   (setq dashboard-startup-banner 'logo)
   (dashboard-setup-startup-hook))
+
+(use-package magit)
+
+;; zzamboni.org/post/how-to-insert-screenshots-in-org-documents-on-macos/
+(use-package org-download
+  :after org
+  :defer nil
+  :custom
+  (org-download-method 'directory)
+  (org-download-image-dir "images")
+  (org-download-heading-lvl nil)
+  (org-download-timestamp "%Y%m%d-%H%M%S_")
+  (org-image-actual-width 300)
+  (org-download-screenshot-method "/usr/local/bin/pngpaste %s")
+  :bind
+  ("C-M-y" . org-download-screenshot)
+  :config
+  (require 'org-download))
+(add-hook 'dired-mode-hook 'org-download-enable)
+
+(use-package exec-path-from-shell
+   :if (memq window-system '(mac ns))
+   :ensure t
+   :config
+   (exec-path-from-shell-initialize))
