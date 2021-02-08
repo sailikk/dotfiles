@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: haskell_anki_header
+# key: <hanki
+# --
+* $1
+  :PROPERTIES:
+  :ANKI_DECK: Haskell
+  :ANKI_NOTE_TYPE: CS Racket
+  :ANKI_TAGS: programming haskell
+  :END:
+** Front Text$2
+** Front Code$3
+** Back Text$4
+** Back Code$0
