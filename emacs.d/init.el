@@ -413,3 +413,8 @@ background of code to whatever theme I'm using's background"
    :ensure t
    :config
    (exec-path-from-shell-initialize))
+
+(use-package haskell-mode
+  :config
+  (setq haskell-mode-stylish-haskell-path "brittany")
+  (setq haskell-stylish-on-save t))
