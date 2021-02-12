@@ -195,7 +195,10 @@ background of code to whatever theme I'm using's background"
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
-(use-package anki-editor)
+(use-package anki-editor
+  :after org
+  :init
+  (setq-default anki-editor-use-math-jax t))
 
 ;; Must be done before evil
 (setq evil-want-C-i-jump nil)
