@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: linux_anki_header
+# key: <lanki
+# --
+* $1
+  :PROPERTIES:
+  :ANKI_DECK: Linux
+  :ANKI_NOTE_TYPE: CS Basic
+  :ANKI_TAGS: programming linux
+  :END:
+** Front$2
+** Back$0

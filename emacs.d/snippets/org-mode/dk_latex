@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dk_latex
+# key: dk
+# --
+\\($0\\)
