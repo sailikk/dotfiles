@@ -56,8 +56,16 @@
 (use-package all-the-icons)
 
 ;; Japanese font
+(defun my-ja-font-setter (spec)
+  (set-fontset-font nil 'japanese-jisx0208 spec)
+  (set-fontset-font nil 'katakana-jisx0201 spec)
+  (set-fontset-font nil 'japanese-jisx0212 spec)
+  (set-fontset-font nil '(#x0080 . #x024F) spec)
+  (set-fontset-font nil '(#x0370 . #x03FF) spec)
+  (set-fontset-font nil 'mule-unicode-0100-24ff spec))
+
 (when (eq system-type 'gnu/linux)
-  (set-fontset-font "fontset-default" 'han "Noto Sans CJK JP"))
+  (my-ja-font-setter "Noto Sans CJK JP"))
 
 ;; Define a sentence as a period followed by one or more spaces.
 (setq sentence-end-double-space nil)
