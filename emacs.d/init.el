@@ -55,9 +55,9 @@
 
 (use-package all-the-icons)
 
-;; Japanese font. Well, this applies to all CJK glyphs anyway
-;; Will not work on a Mac terminal! Careful!
-;; (set-fontset-font "fontset-default" 'han "Migu 2M")
+;; Japanese font
+(when (eq system-type 'gnu/linux)
+  (set-fontset-font "fontset-default" 'han "Noto Sans CJK JP"))
 
 ;; Define a sentence as a period followed by one or more spaces.
 (setq sentence-end-double-space nil)
@@ -385,7 +385,7 @@ background of code to whatever theme I'm using's background"
  '(org-agenda-files '("~/org/school.org"))
  '(org-log-into-drawer "CLOCKING")
  '(package-selected-packages
-   '(exec-path-from-shell org-download magit haskell-mode ddskk dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
+   '(exec-path-from-shell org-download magit haskell-mode dashboard solarized-theme yasnippet-snippets scribble-mode avy ivy rainbow-delimiters paredit racket-mode use-package undo-tree evil-org auto-compile)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
