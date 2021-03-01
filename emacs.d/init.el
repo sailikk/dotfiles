@@ -198,7 +198,17 @@ background of code to whatever theme I'm using's background"
 (use-package anki-editor
   :after org
   :init
-  (setq-default anki-editor-use-math-jax t))
+  (setq-default anki-editor-use-math-jax t)
+  :config
+  (defun anki-editor-reset-cloze-number (&optional arg)
+    "Reset cloze number to ARG or 1"
+    (interactive)
+    (setq my-anki-editor-cloze-number (or arg 1)))
+  (defun anki-editor-push-tree ()
+    "Push all notes under a tree."
+    (interactive)
+    (anki-editor-push-notes '(4))
+    (anki-editor-reset-cloze-number)))
 
 ;; Must be done before evil
 (setq evil-want-C-i-jump nil)
